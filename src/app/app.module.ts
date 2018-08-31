@@ -9,18 +9,26 @@ import { AppRoutingModule } from './/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { provideRoutes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   exports: [RouterModule],
   providers: [],
